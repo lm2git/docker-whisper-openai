@@ -11,7 +11,7 @@ Make sure you have the following tools installed:
   - [docker on Windows](docs/win-README.md)
   - [docker on Linux](docs/linux-README.md)
 - **git**: To clone repository  
-  - [Installation guide](https://git-scm.com/book/it/v2/Per-Iniziare-Installing-Git)
+  - [git setup](https://git-scm.com/book/it/v2/Per-Iniziare-Installing-Git)
 
 ## Steps for Installation and Execution
 
