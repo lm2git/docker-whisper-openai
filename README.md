@@ -10,10 +10,17 @@ Make sure you have the following tools installed:
 - **Docker**: To run the containers.
   - [docker on Windows](docs/win-README.md)
   - [docker on Linux](docs/linux-README.md)
-
+- **git**: To clone repository  
+  - [Installation guide](https://git-scm.com/book/it/v2/Per-Iniziare-Installing-Git)
 
 ## Steps for Installation and Execution
 
+Clone repository
+
+```bash
+git clone https://github.com/yourusername/docker-whisper-openai.git
+cd docker-whisper-openai
+```
 ### 1. **Build the Docker Image**
 
 Navigate to the main folder of the project where `Dockerfile` and `main.py` are located, then build the Docker image with the following command:
