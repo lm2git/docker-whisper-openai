@@ -2,13 +2,17 @@
 This guide shows you how to install Docker Desktop on Windows.
 
 ## Steps for installation on Windows:
-Download Docker Desktop for Windows: Go to the official Docker website and download Docker Desktop for Windows:
 
-Download Docker Desktop for Windows
+# 1. Download Docker Desktop for Windows
+
+Go to the official Docker website and download Docker Desktop for Windows:
+[Download Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)
+
 Run the installer: Launch the downloaded installer and follow the on-screen instructions. During installation, Docker Desktop will ask you to enable virtualization in the computer's BIOS if it is not already enabled.
 
-Enable WSL 2 (Windows Subsystem for Linux): Docker Desktop uses WSL 2 as the backend on Windows. If you haven't set it up yet, Docker Desktop will guide you through the process to install it. If you prefer to do it manually, follow these steps:
+# 2. Enable WSL 2 (Windows Subsystem for Linux)
 
+Docker Desktop uses WSL 2 as the backend on Windows. If you haven't set it up yet, Docker Desktop will guide you through the process to install it. If you prefer to do it manually, follow these steps:
 Open PowerShell as an administrator and run:
 
 ```bash
@@ -25,7 +29,6 @@ Verify the installation: Once Docker Desktop is running, open PowerShell or the 
 ```bash
 docker --version
 ```
-
 
 Troubleshooting
 
