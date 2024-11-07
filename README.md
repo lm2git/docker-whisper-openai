@@ -25,6 +25,7 @@ cd docker-whisper-openai
 
 Navigate to the main folder of the project where `Dockerfile` and `main.py` are located, then build the Docker image with the following command:
 
+on your terminal:
 ```bash
 docker build -t whisper-container .
 ```
@@ -34,14 +35,14 @@ This command will build a Docker image named whisper-container.
 
 To run the container and transcribe all .mp4 video files, use the `docker run` command by mounting the folder containing the videos (media folder) and the output folder for the transcription files. Be sure to replace the paths with those that are correct for your system.
 
-Example command on Windows:
+Example command on Windows on command propt :
 ```bash
-docker run --rm     -v C:\path\to\media:/app/media     -v C:\path\to\output:/app/output     whisper-container
+docker run --rm -v C:\path\to\media:/app/media -v C:\path\to\output:/app/output whisper-container
 ```
 
-Example command on macOS/Linux:
+Example command on macOS/Linux on your terminal:
 ```bash
-docker run --rm     -v /path/to/media:/app/media     -v /path/to/output:/app/output     whisper-container
+docker run --rm -v /path/to/media:/app/media -v /path/to/output:/app/output whisper-container
 ```
 
 #### Example paths
