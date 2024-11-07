@@ -15,7 +15,7 @@ Make sure you have the following tools installed:
 
 ## Steps for Installation and Execution
 
-Clone repository
+Clone repository, on your terminal:
 
 ```bash
 git clone https://github.com/lm2git/docker-whisper-openai.git
