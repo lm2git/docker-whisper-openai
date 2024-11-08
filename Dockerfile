@@ -7,8 +7,9 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Installa Whisper direttamente dal repository GitHub di OpenAI
-RUN pip install --no-cache-dir git+https://github.com/openai/whisper.git
+# Installa Whisper e googletrans
+RUN pip install --no-cache-dir git+https://github.com/openai/whisper.git \
+    googletrans==4.0.0-rc1
 
 # Imposta la cartella di lavoro
 WORKDIR /app

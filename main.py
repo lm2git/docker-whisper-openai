@@ -1,38 +1,49 @@
 import whisper
 import os
 from datetime import datetime
+from googletrans import Translator  # Importa il traduttore di Google
 
-# Load the Whisper model
+# Carica il modello di Whisper
 model = whisper.load_model("base")
+translator = Translator()
 
-# Folder containing the videos to transcribe
+# Cartelle per i video da trascrivere e i file di output
 media_folder = "/app/media/"
+output_folder = "/app/output/"
 
-# Check if the folder exists
+# Verifica se le cartelle esistono
 if not os.path.exists(media_folder):
-    print(f"The folder {media_folder} does not exist.")
+    print(f"La cartella {media_folder} non esiste.")
     exit(1)
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
 
-# Loop through all .mp4 files in the folder
+# Loop sui file .mp4 nella cartella
 for video_file in os.listdir(media_folder):
     if video_file.endswith(".mp4"):
         video_path = os.path.join(media_folder, video_file)
-
-        # Transcribe the video
-        print(f"Starting transcription of {video_path}...")
-        result = model.transcribe(video_path)
-
-        # Extract the file name without extension
-        video_name = os.path.splitext(os.path.basename(video_path))[0]
-
-        # Create a name for the transcription file with video name and timestamp
+        video_name = os.path.splitext(video_file)[0]
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        transcription_filename = f"/app/output/{video_name}_{timestamp}_transcription.txt"
 
-        # Save the transcription to a file with the generated name
+        # Trascrizione nella lingua originale
+        print(f"Inizio trascrizione di {video_path}...")
+        result = model.transcribe(video_path)
+        transcript_text = result["text"]
+        
+        # Salva trascrizione
+        transcription_filename = os.path.join(output_folder, f"{video_name}_{timestamp}_transcription.txt")
         with open(transcription_filename, "w") as f:
-            f.write(result["text"])
+            f.write(transcript_text)
+        print(f"Trascrizione completata per {video_file}, salvata in {transcription_filename}")
 
-        print(f"Transcription completed for {video_file}, saved to {transcription_filename}")
+        # Traduzione in italiano
+        print(f"Inizio traduzione di {video_file} in italiano...")
+        translation = translator.translate(transcript_text, dest="it").text
+        
+        # Salva traduzione
+        translation_filename = os.path.join(output_folder, f"{video_name}_{timestamp}_translation_it.txt")
+        with open(translation_filename, "w") as f:
+            f.write(translation)
+        print(f"Traduzione in italiano completata per {video_file}, salvata in {translation_filename}")
 
-print("All transcriptions are completed.")
+print("Tutte le trascrizioni e traduzioni sono state completate.")
